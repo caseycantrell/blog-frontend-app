@@ -7,13 +7,13 @@
 <style></style>
 
 <script>
-  export default {
-    data: function () {
-      return {
-        message: "Welcome to Vue.js!"
-      };
-    },
-    created: function () {},
-    methods: {}
-  };
+export default {
+  data: function () {
+    return {
+      message: "Welcome to this dope af blog page. Click around playa.",
+    };
+  },
+  created: function () {},
+  methods: {},
+};
 </script>

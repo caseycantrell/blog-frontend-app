@@ -3,6 +3,10 @@
     <h2>{{ post.title }}</h2>
     <img :src="post.image" alt="" />
     <h3>{{ post.body }}</h3>
+    <router-link :to="`/posts/${post.id}/edit`">Edit Post</router-link>
+    <br />
+    <br />
+    <button v-on:click="destroyPost()">Delete</button>
   </div>
 </template>
 
@@ -20,6 +24,16 @@ export default {
       this.post = response.data;
     });
   },
-  methods: {},
+  methods: {
+    destroyPost: function () {
+      if (confirm("Are you sure about that, friend?")) {
+        axios.delete(`/posts/${this.post.id}`).then((response) => {
+          console.log(response.data);
+          this.$router.push("/posts");
+          window.alert("Post successfully DESTROYED!!!");
+        });
+      }
+    },
+  },
 };
 </script>
