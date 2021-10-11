@@ -3,15 +3,21 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/posts">Blog Posts</router-link>
+      <router-link v-if="isLoggedIn()" to="/posts">Blog Posts</router-link>
       |
-      <router-link to="/posts/new">New Post</router-link>
+      <router-link v-if="isLoggedIn()" to="/posts/new">New Post</router-link>
       |
-      <router-link to="/signup">Signup</router-link>
+      <router-link v-if="!isLoggedIn()" to="/signup">Signup</router-link>
       |
-      <router-link to="/login">Login</router-link>
+      <router-link v-if="!isLoggedIn()" to="/login">Login</router-link>
       |
-      <router-link to="/logout">Logout</router-link>
+      <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link>
+      <br />
+      <br />
+      <div v-if="flashMessage">
+        {{ flashMessage }}
+        <button v-on:click="flashMessage = ''">Close</button>
+      </div>
     </div>
     <router-view />
   </div>
@@ -44,3 +50,21 @@ div {
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  data: function () {
+    return {
+      flashMessage: "helllllo",
+    };
+  },
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.jwt;
+    },
+    getUserId: function () {
+      return localStorage.user_id;
+    },
+  },
+};
+</script>
