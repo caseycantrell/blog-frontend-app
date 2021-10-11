@@ -27,10 +27,6 @@
       </span>
       <br />
       <br />
-      <div v-if="flashMessage">
-        {{ flashMessage }}
-        <button v-on:click="flashMessage = ''">Close</button>
-      </div>
     </div>
     <router-view />
   </div>
@@ -67,9 +63,7 @@ div {
 <script>
 export default {
   data: function () {
-    return {
-      flashMessage: "helllllo",
-    };
+    return {};
   },
   methods: {
     isLoggedIn: function () {
