@@ -25,13 +25,11 @@
       &nbsp;
       <input type="reset" value="Reset" />
     </form>
-    <br />
-    newPostParams: {{ newPostParams }}
   </div>
 </template>
 <style scoped>
 img {
-  width: 500px;
+  width: 400px;
 }
 </style>
 <script>

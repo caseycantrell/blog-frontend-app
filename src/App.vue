@@ -3,15 +3,28 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link v-if="isLoggedIn()" to="/posts">Blog Posts</router-link>
-      |
-      <router-link v-if="isLoggedIn()" to="/posts/new">New Post</router-link>
-      |
-      <router-link v-if="!isLoggedIn()" to="/signup">Signup</router-link>
-      |
-      <router-link v-if="!isLoggedIn()" to="/login">Login</router-link>
-      |
-      <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link>
+      <span v-if="isLoggedIn()">
+        <router-link to="/posts">All Posts</router-link>
+        |
+      </span>
+
+      <span v-if="isLoggedIn()">
+        <router-link to="/posts/new">New Post</router-link>
+        |
+      </span>
+
+      <span v-if="!isLoggedIn()">
+        <router-link to="/signup">Signup</router-link>
+        |
+      </span>
+
+      <span v-if="!isLoggedIn()">
+        <router-link to="/login">Login</router-link>
+      </span>
+
+      <span v-if="isLoggedIn()">
+        <router-link to="/logout">Logout</router-link>
+      </span>
       <br />
       <br />
       <div v-if="flashMessage">
