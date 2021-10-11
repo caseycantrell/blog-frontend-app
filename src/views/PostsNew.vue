@@ -24,8 +24,6 @@
       </div>
       <br />
       <input type="submit" value="Create" />
-      &nbsp;
-      <input type="reset" value="Reset" />
     </form>
   </div>
 </template>
