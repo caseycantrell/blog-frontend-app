@@ -3,9 +3,11 @@
     <form v-on:submit.prevent="createPost()">
       <h1>Create Post</h1>
       <img v-if="status" :src="`https://http.cat/${status}`" alt="" />
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
+      <br />
+      <div v-for="error in errors" v-bind:key="error">
+        <p>{{ error }}</p>
+      </div>
+      <br />
       <div>
         <label>Title:</label>
         <input type="text" v-model="newPostParams.title" />
@@ -31,6 +33,9 @@
 img {
   width: 400px;
 }
+p {
+  color: red;
+}
 </style>
 <script>
 import axios from "axios";
@@ -52,7 +57,7 @@ export default {
         .post("/posts", this.newPostParams)
         .then((response) => {
           console.log(response.data);
-          this.$parent.flashMessage = "Post created successfully!";
+          window.alert("Post created successfully!");
           this.$router.push("/posts");
         })
         .catch((error) => {
